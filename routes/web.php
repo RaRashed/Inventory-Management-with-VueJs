@@ -30,4 +30,5 @@ Route::middleware([
 
 //Category Route
 Route::resource('categories',CategoryController::class);
+Route::get('categories/{id}/delete',[CategoryController::class,'destroy']);
 
