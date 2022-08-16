@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,13 @@ Route::middleware([
 });
 
 //Category Route
-Route::resource('categories',CategoryController::class);
+Route::middleware(['auth:sanctum'])->group(function(){
+    //Category Route
+    Route::resource('categories',CategoryController::class);
 Route::get('categories/{id}/delete',[CategoryController::class,'destroy']);
+//Brand Route
+Route::resource('brands',BrandController::class);
+Route::get('brands/{id}/delete',[BrandController::class,'destroy']);
+
+});
 

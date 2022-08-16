@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Categories</h1>
+            <h1 class="m-0">Brands</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Category List</li>
+              <li class="breadcrumb-item active">Brand List</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,9 +31,9 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
-                <h4 class="text-center">Category list</h4>
+                <h4 class="text-center">Brand list</h4>
                 <hr>
-                <a href="{{ route('categories.create') }}"  class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>ADD Category</a>
+                <a href="{{ route('brands.create') }}"  class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>ADD Brand</a>
               <div class="card">
 
 
@@ -42,22 +42,22 @@
     <thead>
         <tr>
             <th>#SL</th>
-            <th>Category Name</th>
+            <th>Brand Name</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
 
-            @if($categories)
+            @if($brands)
 
-            @foreach ($categories as $key => $category)
+            @foreach ($brands as $key => $brand)
             <tr>
             <td>{{ ++$key }}</td>
-            <td>{{ $category->name  ?? ' ' }}</td>
+            <td>{{ $brand->name  ?? ' ' }}</td>
             <td>
-                <a class="btn btn-info btn-sm" href="{{ route('categories.edit',$category->id) }}"><i class="fa fa-edit"></i></a>
-                <a class="btn btn-success btn-sm" href="{{ route('categories.show',$category->id) }}"><i class="fa fa-eye"></i></a>
-                <a onclick="return confirm('are you sure?')" href="/categories/{{$category->id}}/delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                <a class="btn btn-info btn-sm" href="{{ route('brands.edit',$brand->id) }}"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-success btn-sm" href="{{ route('brands.show',$brand->id) }}"><i class="fa fa-eye"></i></a>
+                <a onclick="return confirm('are you sure?')" href="/brands/{{$brand->id}}/delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
             </td>
             </tr>
 
