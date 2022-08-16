@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SizeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,10 @@ Route::get('categories/{id}/delete',[CategoryController::class,'destroy']);
 //Brand Route
 Route::resource('brands',BrandController::class);
 Route::get('brands/{id}/delete',[BrandController::class,'destroy']);
+
+//Size Route
+Route::resource('sizes',SizeController::class);
+Route::get('sizes/{id}/delete',[SizeController::class,'destroy']);
 
 });
 
