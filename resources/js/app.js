@@ -31,10 +31,19 @@ require("./bootstrap");
 require('./bootstrap');
 
 import { createApp } from 'vue';
+//import { createStore } from 'vuex'
+//import store from './store/index';
 
 import examples from './components/examples.vue';
+import productadd from './components/products/productadd.vue';
 
 let app=createApp({})
 app.component('example' , examples);
+app.component('productadd' , productadd);
 
-app.mount("#app")
+import store from "./store/index";
+
+createApp(productadd)
+  .use(store)
+  .mount("#app");
+//app.mount("#app")
