@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryStoreRequest;
 use App\Models\Category;
+
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CategoryController extends Controller
 {
@@ -103,5 +105,15 @@ class CategoryController extends Controller
         flash('Category Deleted Successfully')->success();
         return back();
 
+    }
+
+    public function getCategoriesJson(){
+        $categories = Category::all();
+
+        return response()->json([
+            'success' => true,
+            'data' =>$categories
+
+        ],Response::HTTP_OK);
     }
 }

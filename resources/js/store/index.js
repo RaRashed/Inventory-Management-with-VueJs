@@ -1,9 +1,10 @@
 import { createStore } from 'vuex';
 
-//import a from './module/a';
+import categories from './modules/categories';
 
 export default createStore({
   modules: {
+    categories
 
   }
 });

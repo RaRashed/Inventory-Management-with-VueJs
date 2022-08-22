@@ -30,7 +30,15 @@
 
 
 <script>
+import store from '../../store';
+import * as actions from "../../store/action-types";
 export default {
+
+mounted(){
+    //Get Categories
+    store.dispatch(actions.GET_CATEGORIES)
+}
+
 
 }
 
