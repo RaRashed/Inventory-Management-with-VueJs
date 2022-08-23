@@ -40,6 +40,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/api/categories',[CategoryController::class,'getCategoriesJson']);
     //Brand Route
 Route::resource('brands',BrandController::class);
+Route::get('/api/brands',[BrandController::class,'getBrandsJson']);
 Route::get('brands/{id}/delete',[BrandController::class,'destroy']);
 
 //Size Route

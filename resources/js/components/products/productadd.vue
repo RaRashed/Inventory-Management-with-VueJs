@@ -18,6 +18,17 @@
        </div>
 
     </div>
+
+    <div class="card-body">
+       <div class="form-group">
+       <label for="">Brands</label>
+       <select class="form-control" v-model="form.brand_id">
+       <option v-for="(item,index) in brands" :key="index" :value="item.id">{{item.name}}</option>
+       </select>
+       <Select2 v-model="form.brand_id" :options="brands" :settings="{placeholder : 'Select Brand'}"></Select2>
+       </div>
+
+    </div>
     <div >
         <button type="submit" class="ml-4 btn btn-info"> Save</button>
 
@@ -44,20 +55,23 @@ export default {
     data(){
         return {
             form:{
-                category_id : 0
+                category_id : 0,
+                brand_id : 0
             }
         }
 
     },
 computed:{
     ...mapGetters({
-        'categories':'getCategories'
+        'categories':'getCategories',
+        'brands' : 'getBrands'
     })
 
 },
 mounted(){
     //Get Categories
-    store.dispatch(actions.GET_CATEGORIES)
+    store.dispatch(actions.GET_CATEGORIES),
+    store.dispatch(actions.GET_BRANDS)
 }
 
 

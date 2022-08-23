@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Http\Response;
 use App\Models\Brand;
 
 class BrandController extends Controller
@@ -106,4 +108,15 @@ class BrandController extends Controller
        return back();
 
    }
+
+   public function getBrandsJson(){
+    $brands = Brand::all();
+
+    return response()->json([
+        'success' => true,
+        'data' =>$brands
+
+    ],Response::HTTP_OK);
+}
+
 }

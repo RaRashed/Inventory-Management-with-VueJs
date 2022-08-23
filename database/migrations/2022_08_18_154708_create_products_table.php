@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->decimal('retail_price',8,2);
             $table->string('year',4);
             $table->string('descripton');
-            $table->boolean(Product::STATUS_ACTIVE);
+            $table->boolean('status')->default(Product::STATUS_ACTIVE);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
