@@ -2,9 +2,9 @@ import actions from './actions'
 import getters from './getters'
 import mutations from './mutation'
 const state={
-    categories:{}
+    categories:[]
 }
-export default{
+export default {
     state,
     actions,
     getters,

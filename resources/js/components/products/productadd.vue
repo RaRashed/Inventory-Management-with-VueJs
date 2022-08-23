@@ -1,4 +1,5 @@
- <template>
+
+<template>
 
      <div class="card card-primary card-outline">
               <div class="card-body">
@@ -7,13 +8,14 @@
 
 <form class="form mt-3" role="form" method="POST" >
 
-
-    <div class="card-body">
-
-
-        <label for="" class="title mt-5">Product Name</label>
-        <input type="text" class="form-control" name="name" placeholder="Enter Product Name">
-
+<div class="card-body">
+       <div class="form-group">
+       <label for="">Category</label>
+       <select class="form-control" v-model="form.category_id">
+       <option v-for="(item,index) in categories" :key="index" :value="item.id">{{item.name}}</option>
+       </select>
+       <Select2 v-model="form.category_id" :options="categories" :settings="{placeholder : 'select category'}"></Select2>
+       </div>
 
     </div>
     <div >
@@ -30,10 +32,29 @@
 
 
 <script>
-import store from '../../store';
-import * as actions from "../../store/action-types";
-export default {
 
+import store from '../../store'
+import * as actions from "../../store/action-types";
+import { mapGetters } from 'vuex'
+import Select2 from 'vue3-select2-component';
+
+export default {
+       components: {Select2},
+
+    data(){
+        return {
+            form:{
+                category_id : 0
+            }
+        }
+
+    },
+computed:{
+    ...mapGetters({
+        'categories':'getCategories'
+    })
+
+},
 mounted(){
     //Get Categories
     store.dispatch(actions.GET_CATEGORIES)
