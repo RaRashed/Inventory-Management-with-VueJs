@@ -109,6 +109,8 @@ class BrandController extends Controller
 
    }
 
+   //Handle AJAX REQUEST
+
    public function getBrandsJson(){
     $brands = Brand::all();
 
