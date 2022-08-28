@@ -32,10 +32,8 @@
                 </div>
             @endif
                 <h4 class="text-center">Category list</h4>
-                <example></example>
                 <hr>
                 <a href="{{ route('categories.create') }}"  class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>ADD Category</a>
-                <example></example>
               <div class="card">
 
 

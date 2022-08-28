@@ -53,3 +53,6 @@ Route::get('products/{id}/delete',[ProductsController::class,'destroy']);
 
 });
 
+Route::view('/{any}', 'dashboard')
+    ->middleware(['auth'])
+    ->where('any', '.*');

@@ -28,22 +28,38 @@ createApp(App).mount("#app");
 require("./bootstrap");
 */
 
-require('./bootstrap');
+//require('./bootstrap');
 
 import { createApp } from 'vue';
 //import { createStore } from 'vuex'
 //import store from './store/index';
 
 import examples from './components/examples.vue';
-import productadd from './components/products/productadd.vue';
+import ProductAdd from './components/products/ProductAdd.vue';
 
-let app=createApp({})
+/*let app=createApp({})
 app.component('example' , examples);
 app.component('productadd' , productadd);
+*/
+import router from './router';
+import store from "./store/index.js";
 
-import store from "./store/index";
-
-createApp(productadd)
+/* createApp(productadd)
   .use(store)
-  .mount("#app");
+   .mount("#app");
+   */
+
+  //app.mount("#app").use(store);
+
 //app.mount("#app")
+
+/*const app = createApp({ productadd})
+app.use(store)
+*/
+
+createApp({
+    components: {
+        ProductAdd
+    }
+}).use(store).use(router).mount('#app')
+
