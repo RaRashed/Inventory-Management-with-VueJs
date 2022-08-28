@@ -1,5 +1,6 @@
 
 <template>
+<form @submit.prevent="submitForm" role="form" method="POST" >
 <div class="row">
 <div class="col-sm-6">
 <div class="card card-primary card-outline">
@@ -7,9 +8,9 @@
                 <h5 class="card-title"> Product Create</h5>
 
 
-<form class="mt-3" role="form" method="POST" >
 
-<div class="card-body">
+
+<div class="card-body mt-3">
        <div class="form-group">
        <label for="">Category <span class="text-danger">*</span></label>
 
@@ -74,12 +75,12 @@
 
 
     </div>
-    <div >
+    <div class="form-group" >
         <button type="submit" class="ml-4 btn btn-info"> Save</button>
 
 
     </div>
-</form>
+
               </div>
                 </div>
 
@@ -89,10 +90,10 @@
         <div class="card-body">
         <h5 class="card-title"> Product Size</h5>
         <br>
-        <div class="row" v-for="(item,index) in form.items" :key="index">
+        <div class="row mb-1" v-for="(item,index) in form.items" :key="index">
 
     <div class="col-sm-4">
-        <select class="form-control" v-model="form.size_id">
+        <select class="form-control" v-model="item.size_id">
 
         <option v-for="(item,index) in sizes" :key="index" :value="item.id">{{ item.size }}</option>
        </select>
@@ -105,18 +106,19 @@
           <input type="number" class="form-control" v-model="item.quantity" placeholder="Quantity">
     </div>
      <div class="col-sm-2">
-          <button type="button" class="btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+          <button @click="deleteItem(index)" type="button" class="btn-danger btn-sm"><i class="fa fa-trash"></i></button>
     </div>
 
 
         </div>
-        <button type="button" class="btn btn-primary btn-sm mt-3"> <i class="fa fa-plus"></i>Add Item</button>
+        <button @click="addItem" type="button" class="btn btn-primary btn-sm mt-3"> <i class="fa fa-plus"></i>Add Item</button>
 
       </div>
    </div>
 </div>
 
 </div>
+</form>
 
 
 
@@ -178,7 +180,25 @@ mounted(){
     store.dispatch(actions.GET_BRANDS),
     //get sizes
       store.dispatch(actions.GET_SIZES)
+},
+methods:{
+    addItem(){
+        let item ={
+              size_id:null,
+                    location:'',
+                    quantity: 0
+
+        }
+        this.form.items.push(item)
+    },
+    deleteItem(index){
+    this.form.items.splice(index,1)
+},
+submitForm(){
+    console.log(this.form)
 }
+}
+
 
 
 }
