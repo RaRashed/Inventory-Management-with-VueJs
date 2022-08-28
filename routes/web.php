@@ -45,6 +45,8 @@ Route::get('brands/{id}/delete',[BrandController::class,'destroy']);
 
 //Size Route
 Route::resource('sizes',SizeController::class);
+Route::get('/api/sizes',[SizeController::class,'getSizesJson']);
+
 Route::get('sizes/{id}/delete',[SizeController::class,'destroy']);
 
 //Product Route

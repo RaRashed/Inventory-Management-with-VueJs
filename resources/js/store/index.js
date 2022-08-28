@@ -3,11 +3,13 @@ import { createApp } from 'vue'
 
 import categories from './modules/categories';
 import brands from './modules/brands';
+import sizes from './modules/sizes';
 
 export default createStore({
   modules: {
     categories,
-    brands
+    brands,
+    sizes
 
   }
 });

@@ -1,7 +1,8 @@
 
 <template>
-
-     <div class="card card-primary card-outline">
+<div class="row">
+<div class="col-sm-6">
+<div class="card card-primary card-outline">
               <div class="card-body">
                 <h5 class="card-title"> Product Create</h5>
 
@@ -11,17 +12,17 @@
 <div class="card-body">
        <div class="form-group">
        <label for="">Category <span class="text-danger">*</span></label>
-       <select class="form-control" v-model="form.category_id">
-       <option v-for="(item,index) in categories" :key="index" :value="item.id">{{item.name}}</option>
-       </select>
+
        <Select2 v-model="form.category_id" :options="categories" :settings="{placeholder : 'select category'}"></Select2>
        </div>
 
        <div class="form-group">
        <label for="">Brands<span class="text-danger">*</span></label>
-       <select class="form-control" v-model="form.brand_id">
-       <option v-for="(item,index) in brands" :key="index" :value="item.id">{{item.name}}</option>
+       <!-- <select class="form-control" v-model="form.brand_id">
+        <option v-for="(item,index) in brands" :key="index" :value="item.id">item.name }}</option>
        </select>
+       -->
+
        <Select2 v-model="form.brand_id" :options="brands" :settings="{placeholder : 'Select Brand'}"></Select2>
        </div>
 
@@ -82,6 +83,43 @@
               </div>
                 </div>
 
+</div>
+<div class="col-sm-6">
+   <div class="card card-primary card-outline">
+        <div class="card-body">
+        <h5 class="card-title"> Product Size</h5>
+        <br>
+        <div class="row" v-for="(item,index) in form.items" :key="index">
+
+    <div class="col-sm-4">
+        <select class="form-control" v-model="form.size_id">
+
+        <option v-for="(item,index) in sizes" :key="index" :value="item.id">{{ item.size }}</option>
+       </select>
+    </div>
+    <div class="col-sm-3">
+         <input type="text" class="form-control" v-model="item.location" placeholder="Location">
+    </div>
+
+     <div class="col-sm-3">
+          <input type="number" class="form-control" v-model="item.quantity" placeholder="Quantity">
+    </div>
+     <div class="col-sm-2">
+          <button type="button" class="btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+    </div>
+
+
+        </div>
+        <button type="button" class="btn btn-primary btn-sm mt-3"> <i class="fa fa-plus"></i>Add Item</button>
+
+      </div>
+   </div>
+</div>
+
+</div>
+
+
+
     </template>
 
 
@@ -113,7 +151,13 @@ export default {
                 retail_price:0,
                 year:'',
                 description:'',
-                status:1
+                status:1,
+                items:[{
+                    size_id:null,
+                    location:'',
+                    quantity: 0
+
+                }]
             }
         }
 
@@ -122,14 +166,18 @@ export default {
 computed:{
     ...mapGetters({
         'categories':'getCategories',
-        'brands' : 'getBrands'
+        'brands' : 'getBrands',
+         'sizes' : 'getSizes'
     })
 
 },
 mounted(){
     //Get Categories
     store.dispatch(actions.GET_CATEGORIES),
-    store.dispatch(actions.GET_BRANDS)
+    //Get Brands
+    store.dispatch(actions.GET_BRANDS),
+    //get sizes
+      store.dispatch(actions.GET_SIZES)
 }
 
 
