@@ -36,17 +36,7 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-
-            'name' => 'required|min:2'
-        ]);
-
-        $cat = new Category();
-        $cat->name=$request->name;
-        $cat->save();
-       // return redirect(route('products$products.index'))->with('success','Category Created Successfully!!');
-        flash('Category Created Successfully')->success();
-        return back();
+        return $request->all();
     }
 
     /**
