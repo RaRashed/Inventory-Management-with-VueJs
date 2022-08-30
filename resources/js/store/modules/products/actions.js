@@ -1,5 +1,5 @@
 import * as actions from '../../action-types'
-//import * as mutations from '../../mutation-types'
+import * as mutations from '../../mutation-types'
 import Axios from 'axios'
 
 export default {
@@ -11,7 +11,8 @@ export default {
            //}
         })
         .catch(err=>{
-            //console.log(err.response)
+            console.log(err.response.data.errors)
+            commit(mutations.SET_ERRORS,err.response.data.errors)
         })
 
     }
